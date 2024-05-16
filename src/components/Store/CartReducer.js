@@ -10,7 +10,7 @@ const CartReducer=createSlice({
          console.log(state.showcart)
         },
         addtocart(state,action){
-            console.log(state.arr[0])
+            console.log(action.payload)
             console.log('inside reducer')
             let  found = false
             state.arr.forEach((ele,item)=>{

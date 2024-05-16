@@ -19,6 +19,17 @@ function App() {
   const [modal,setmodal] = useState('')
   const [modal2,setmodal2]= useState(false)
   const Dispatch = useDispatch()
+  async function getdata(){
+    try{
+      const res = await axios.get('https://authentication-1f2ad-default-rtdb.firebaseio.com/cart.json')
+      const dataArray = Object.entries(res.data).map(([key, value]) => {
+                
+        return { id: key, ...value };
+    });
+      Dispatch(cartactions.setcart(dataArray))
+    }
+    catch{}
+  }
   async function fetchdata(TotalCart){
     console.log('hii')
     if(!isTrue){
@@ -46,7 +57,10 @@ function App() {
     }
 
   }
+  useEffect(()=>{
+    getdata()
 
+  },[])
   useEffect(()=>{
     fetchdata(TotalCart)
 

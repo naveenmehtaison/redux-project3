@@ -52,7 +52,11 @@ const CartReducer=createSlice({
 
             state.notificationstate={status:action.payload.status,Tittle:action.payload.Tittle,message:action.payload.message}
             
+        },
+        setcart(state,action){
+            state.arr=[...action.payload]
         }
+        
         
     }
 })

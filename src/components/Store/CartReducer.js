@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-const initialstate={showcart:false,arr:[]}
+const initialstate={showcart:false,arr:[],notificationstate:null}
 const CartReducer=createSlice({
     name:'showingcart',
     initialState:initialstate,
@@ -47,7 +47,13 @@ const CartReducer=createSlice({
                 }
             })
 
+        },
+        notification(state,action){
+
+            state.notificationstate={status:action.payload.status,Tittle:action.payload.Tittle,message:action.payload.message}
+            
         }
+        
     }
 })
 export const cartactions = CartReducer.actions
